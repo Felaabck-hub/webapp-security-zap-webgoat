@@ -1,0 +1,79 @@
+ Web Application Security Analysis Project
+
+  Objective
+This project demonstrates how to analyze and identify common web application vulnerabilities using OWASP ZAP and WebGoat. The goal is to understand how attackers exploit weaknesses such as:
+- SQL Injection (SQLi)
+- Cross-Site Scripting (XSS)
+- Cross-Site Request Forgery (CSRF)
+
+
+  Tools & Environment
+
+| Tool          | Purpose |
+
+| 🐱 Kali Linux | Security-focused Linux distro |
+| ☠️ WebGoat     | Intentionally vulnerable web app |
+| 🕷️ OWASP ZAP   | Vulnerability scanner |
+| 🌐 Firefox    | Manual interaction & testing |
+| 📸 Flameshot / Screenshot | Documentation images |
+
+
+
+## 🧰 Setup Instructions
+
+### 🔸 1. Install Java (for WebGoat)
+```bash
+sudo apt update
+sudo apt install default-jdk -y
+
+2. Download & Run WebGoat
+wget https://github.com/WebGoat/WebGoat/releases/download/v8.2.0/webgoat-server-8.2.0.jar
+java -jar webgoat-server-8.2.0.jar
+
+Then open in browser:
+ http://localhost:8080/WebGoat
+ Login or register as a new user
+
+3. Launch OWASP ZAP
+    owasp-zap
+
+        Use Manual Explore
+	Enter: http://localhost:8080/WebGoat
+	Start scanning
+
+
+🔍 Vulnerability Analysis Steps
+
+✅ 1. Spider & Active Scan
+	•	In ZAP, right-click http://localhost:8080 > Attack > Spider
+	•	Then right-click again > Attack > Active Scan
+
+✅ 2. Find & Understand Vulnerabilities
+
+Use ZAP alerts to locate vulnerabilities:
+	•	SQL Injection – /login or user input fields
+	•	XSS – search forms or comment inputs
+	•	CSRF – user settings or password change forms
+
+⸻
+
+🧪 Exploitation Examples
+
+🔓 SQL Injection
+
+Payload: ' OR '1'='1
+Result: Bypassed login form
+Screenshot: images/SQL.png
+
+🛡️ Mitigation Recommendation
+
+    Vulnerability   Mitigation 
+     SQLi           Use parameterized queries (prepared statements)
+
+
+📘 What I Learned
+	•	How to identify web vulnerabilities using an automated scanner
+	•	How to manually exploit basic injection and scripting flaws
+	•	The importance of secure coding practices and mitigation
+	•	Documenting security analysis like a professional
+⚠
